@@ -1143,7 +1143,6 @@ local Tabs = {
 	Exploits = Window:AddTab("Exploits", "shield"),
 	Visuals  = Window:AddTab("Visuals", "eye"),
 	Floors   = Window:AddTab("Floors", "earth"),
-	Archives  = Window:AddTab("New - Archives", "rbxassetid://104508835882225"),
 }
 
 Groupboxes.General_Character = Tabs.General:AddLeftGroupbox("Character")
@@ -1502,19 +1501,16 @@ end)
 
 -- Archives
 
-Groupboxes.Archives_Misc = Tabs.Archives:AddRightGroupbox("Miscellaneous / Anti")
 Groupboxes.Self_Automation:AddToggle("ForgetMeNotSolver", { Text = "Forget Me Not Skipper", Default = false, Tooltip = "Automatically Skippes Forget Me Not doors." })
 Groupboxes.Exploits_Bypass:AddToggle("AntiRansom", { Text = "Anti Ransom", Default = false, Tooltip = "Prevents 'Ransom' from attacking you." })
 Groupboxes.Exploits_Bypass:AddToggle("AntiScribbles", { Text = "Anti Scribbles", Default = false, Tooltip = "Prevents 'Scribbles' from attacking you." })
 Groupboxes.Exploits_Bypass:AddToggle("AntiClosetTrash", { Text = "Anti Closet Trash", Default = false, Tooltip = "Prevents 'Closet Trash' from spawning." })
 
 
-Groupboxes.Archives_Bypasses = Tabs.Archives:AddLeftGroupbox("Bypasses")
 Groupboxes.Exploits_Bypass:AddToggle("BypassWater", { Text = "Bypass Electric Water", Default = false, Tooltip = "Prevents electric water from hurting you." })
 Groupboxes.Exploits_Bypass:AddToggle("BypassAlma", { Text = "Bypass Alma", Default = false, Tooltip = "Prevents 'Alma' from spawning." })
 Groupboxes.Exploits_Bypass:AddToggle("BypassDrones",         { Text = "Bypass Drones",           Default = false, Tooltip = "Prevents 'Drones' from attacking you." })
 
-Groupboxes.Archives_Experimental = Tabs.Archives:AddLeftGroupbox("Experimental")
 Groupboxes.Exploits_Bypass:AddToggle("BypassDronesStampede",         { Text = "Bypass Drones Stampede",           Default = false, Tooltip = "Prevents 'The Drones Stampede' from attacking you." })
 
 Toggles.AntiClosetTrash:OnChanged(function(Value)
