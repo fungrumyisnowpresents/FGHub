@@ -5964,4 +5964,6 @@ end)
 
 while not Globals.MainUI do task.wait() end
 Abysall.Interface.ApplySettingsTab(Window)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ТВОЙ_НИК/AbysallContinued/main/Scripts/Bridge.luau"))()
 Functions.Notify({ Title = "Successfully loaded in " .. math.floor((tick() - LoadStart) * 1000) / 1000 .. " seconds." , Body = "Press '" .. tostring(Options.MenuKeybind.Value) .. "' to toggle the UI."})
+
