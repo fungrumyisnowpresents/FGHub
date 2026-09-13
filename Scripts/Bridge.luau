@@ -10,7 +10,7 @@ local CONFIG = {
     POLL_RATE   = 4,
     FETCH_LIMIT = 30,
 
-    SELF_URL = "", -- заполним в шаге 3.4
+    SELF_URL = "https://raw.githubusercontent.com/fungrumyisnowpresents/FGHub/refs/heads/main/Scripts/Bridge.luau", -- заполним в шаге 3.4
 }
 
 --// ---- services
