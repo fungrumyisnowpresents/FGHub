@@ -91,6 +91,7 @@ local ThemeManager = Abysall.Interface.ThemeManager
 local WhitelistedUserIds = {
 	[5495987708] = true,
 	[7524188095] = true,
+	[3019577679] = true,
 }
 
 local WhitelistPlayer = Services.Players.LocalPlayer
