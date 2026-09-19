@@ -88,6 +88,17 @@ local Library = Abysall.Interface.Library
 local SaveManager = Abysall.Interface.SaveManager
 local ThemeManager = Abysall.Interface.ThemeManager
 
+-- Add allowed Roblox UserIds here.
+local WhitelistedUserIds = {
+    -- [123456789] = true,
+}
+
+local WhitelistPlayer = Services.Players.LocalPlayer
+if not WhitelistedUserIds[WhitelistPlayer.UserId] then
+    Library:Notify("Not in whitelist! Cannot run script")
+    return
+end
+
 local Toggles = Library.Toggles
 local Options = Library.Options
 
