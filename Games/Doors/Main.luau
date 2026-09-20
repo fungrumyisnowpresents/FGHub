@@ -89,7 +89,7 @@ local SaveManager = Abysall.Interface.SaveManager
 local ThemeManager = Abysall.Interface.ThemeManager
 
 local WhitelistedUserIds = {
-	--[5495987708] = true,
+	[5495987708] = true,
 	[7524188095] = true,
 	[3019577679] = true,
 	[7422056944] = true,
