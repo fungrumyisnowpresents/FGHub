@@ -1599,6 +1599,107 @@ Toggles.TpNextDoor:OnChanged(function(TpNextDoorEnabled)
 	end)
 end)
 
+Groupboxes.General_AntiLag = Tabs.General:AddRightGroupbox("Anti-Lag")
+
+Groupboxes.General_AntiLag:AddToggle("AntiLagParticles", {
+    Text = "Disable Particles", Default = false
+})
+Groupboxes.General_AntiLag:AddToggle("AntiLagTrails", {
+    Text = "Disable Trails / Beams", Default = false
+})
+Groupboxes.General_AntiLag:AddToggle("AntiLagLights", {
+    Text = "Disable Lights", Default = false
+})
+Groupboxes.General_AntiLag:AddToggle("AntiLagTextures", {
+    Text = "Hide Textures", Default = false
+})
+Groupboxes.General_AntiLag:AddToggle("AntiLagMaterials", {
+    Text = "Reduce Materials", Default = false
+})
+Groupboxes.General_AntiLag:AddToggle("AntiLagEffects", {
+    Text = "Disable Post Effects", Default = false
+})
+Groupboxes.General_AntiLag:AddToggle("AntiLagShadows", {
+    Text = "Disable Shadows", Default = false
+})
+
+local AntiLagOriginals = {
+    Particles = {}, Trails = {}, Lights = {}, Textures = {},
+    Materials = {}, Reflectance = {}, Effects = {},
+    GlobalShadows = Services.Lighting.GlobalShadows,
+}
+
+local function ApplyAntiLagToObject(Object)
+    if Object:IsA("ParticleEmitter") then
+        if AntiLagOriginals.Particles[Object] == nil then
+            AntiLagOriginals.Particles[Object] = Object.Enabled
+        end
+        Object.Enabled = Toggles.AntiLagParticles.Value and false or AntiLagOriginals.Particles[Object]
+    elseif Object:IsA("Trail") or Object:IsA("Beam") then
+        if AntiLagOriginals.Trails[Object] == nil then
+            AntiLagOriginals.Trails[Object] = Object.Enabled
+        end
+        Object.Enabled = Toggles.AntiLagTrails.Value and false or AntiLagOriginals.Trails[Object]
+    elseif Object:IsA("PointLight") or Object:IsA("SpotLight") or Object:IsA("SurfaceLight") then
+        if AntiLagOriginals.Lights[Object] == nil then
+            AntiLagOriginals.Lights[Object] = Object.Enabled
+        end
+        Object.Enabled = Toggles.AntiLagLights.Value and false or AntiLagOriginals.Lights[Object]
+    elseif Object:IsA("Decal") or Object:IsA("Texture") then
+        if AntiLagOriginals.Textures[Object] == nil then
+            AntiLagOriginals.Textures[Object] = Object.Transparency
+        end
+        Object.Transparency = Toggles.AntiLagTextures.Value and 1 or AntiLagOriginals.Textures[Object]
+    elseif Object:IsA("BasePart") then
+        if AntiLagOriginals.Materials[Object] == nil then
+            AntiLagOriginals.Materials[Object] = Object.Material
+        end
+        if AntiLagOriginals.Reflectance[Object] == nil then
+            AntiLagOriginals.Reflectance[Object] = Object.Reflectance
+        end
+        if Toggles.AntiLagMaterials.Value then
+            Object.Material = Enum.Material.SmoothPlastic
+            Object.Reflectance = 0
+        else
+            Object.Material = AntiLagOriginals.Materials[Object]
+            Object.Reflectance = AntiLagOriginals.Reflectance[Object]
+        end
+    elseif Object:IsA("PostEffect") then
+        if AntiLagOriginals.Effects[Object] == nil then
+            AntiLagOriginals.Effects[Object] = Object.Enabled
+        end
+        Object.Enabled = Toggles.AntiLagEffects.Value and false or AntiLagOriginals.Effects[Object]
+    end
+end
+
+game.DescendantAdded:Connect(ApplyAntiLagToObject)
+
+for _, Object in ipairs(game:GetDescendants()) do
+    task.spawn(ApplyAntiLagToObject, Object)
+end
+
+Toggles.AntiLagParticles:OnChanged(function()
+    for _, Object in ipairs(game:GetDescendants()) do task.spawn(ApplyAntiLagToObject, Object) end
+end)
+Toggles.AntiLagTrails:OnChanged(function()
+    for _, Object in ipairs(game:GetDescendants()) do task.spawn(ApplyAntiLagToObject, Object) end
+end)
+Toggles.AntiLagLights:OnChanged(function()
+    for _, Object in ipairs(game:GetDescendants()) do task.spawn(ApplyAntiLagToObject, Object) end
+end)
+Toggles.AntiLagTextures:OnChanged(function()
+    for _, Object in ipairs(game:GetDescendants()) do task.spawn(ApplyAntiLagToObject, Object) end
+end)
+Toggles.AntiLagMaterials:OnChanged(function()
+    for _, Object in ipairs(game:GetDescendants()) do task.spawn(ApplyAntiLagToObject, Object) end
+end)
+Toggles.AntiLagEffects:OnChanged(function()
+    for _, Object in ipairs(game:GetDescendants()) do task.spawn(ApplyAntiLagToObject, Object) end
+end)
+Toggles.AntiLagShadows:OnChanged(function(Value)
+    Services.Lighting.GlobalShadows = Value and false or AntiLagOriginals.GlobalShadows
+end)
+
 Groupboxes.Exploits_Bypass = Tabs.Exploits:AddLeftGroupbox("Bypass / Solve")
 
 Groupboxes.Exploits_Bypass:AddToggle("BypassGiggle",         { Text = "Bypass Giggle",           Default = false, Tooltip = "Prevents 'Giggle' from attacking you." })
