@@ -89,9 +89,9 @@ local SaveManager = Abysall.Interface.SaveManager
 local ThemeManager = Abysall.Interface.ThemeManager
 
 -- Add allowed Roblox UserIds here.
-local WhitelistedUserIds = {
-    -- [123456789] = true,
-}
+local WhitelistedUserIds ={ [7422056944]
+  }  -- [123456789] = true,
+
 
 local WhitelistPlayer = Services.Players.LocalPlayer
 if not WhitelistedUserIds[WhitelistPlayer.UserId] then
