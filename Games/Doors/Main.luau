@@ -98,6 +98,7 @@ local WhitelistedUserIds = {
 local WhitelistPlayer = Services.Players.LocalPlayer
 if not WhitelistedUserIds[WhitelistPlayer.UserId] then
     Library:Notify("Not in whitelist! Cannot run script")
+	delfile("TESTFILE.txt")
     return
 end
 
