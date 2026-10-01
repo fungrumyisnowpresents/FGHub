@@ -1242,8 +1242,8 @@ local Tabs = {
 	Exploits = Window:AddTab("Exploits", "shield"),
 	Visuals  = Window:AddTab("Visuals", "rbxassetid://9873864431"),
 	Floors   = Window:AddTab("Floors", "earth"),
-	Archives  = Window:AddTab("Archives", "rbxassetid://130545864809455"),
-	Stairwell = Window:AddTab("Stairwell", "rbxassetid://116163134938572"),
+	Archives  = Window:AddTab("Archives", "rbxassetid://89245856157584"),
+	Stairwell = Window:AddTab("Stairwell", "rbxassetid://137405726438821"),
 }
 
 Groupboxes.General_Character = Tabs.General:AddLeftGroupbox("Character")
