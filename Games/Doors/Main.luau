@@ -89,6 +89,18 @@ local Library = Abysall.Interface.Library
 local SaveManager = Abysall.Interface.SaveManager
 local ThemeManager = Abysall.Interface.ThemeManager
 
+local WhitelistedUserIds = {
+   [4649884778] = true,
+   [3019577679] = true,
+   [7524188095] = true,
+}
+
+local WhitelistPlayer = Services.Players.LocalPlayer
+if not WhitelistedUserIds[WhitelistPlayer.UserId] then
+    Library:Notify("Not in whitelist! Cannot run script")
+    return
+end
+
 local Toggles = Library.Toggles
 local Options = Library.Options
 
