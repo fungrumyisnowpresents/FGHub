@@ -93,6 +93,7 @@ local WhitelistedUserIds = {
    [4649884778] = true,
    [3019577679] = true,
    [7524188095] = true,
+   [5495987708] = true,
 }
 
 local WhitelistPlayer = Services.Players.LocalPlayer
