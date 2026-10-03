@@ -15,7 +15,7 @@ getgenv().Abysall = {
     Legit = true
 }
 
-local BaseUrl = "https://raw.githubusercontent.com/fungrumyisnowpresents/FGHub/main/"
+local BaseUrl = "https://raw.githubusercontent.com/therealcookiemonsterof1966/AbysallContinued/main/"
 
 getgenv().Abysall = {
     Environment = loadstring(game:HttpGet(BaseUrl .. "Components/Environment.luau"))(),
@@ -664,7 +664,7 @@ Functions.Notify = function(Settings)
 			end
 		end
 		Globals.DoorsNotify({
-			Title = "FGHub",
+			Title = "Abysall Hub",
 			Description = Settings.Title,
 			Reason = Settings.Body,
 			Style = IsEntity and "WARNING" or "NOTIFICATION",
@@ -681,13 +681,13 @@ Functions.Notify = function(Settings)
 
 		if Settings.Image then
 			Globals.STX:Notify(
-				{Title = "FGHub", Description = Settings.Title .. "\n" .. Settings.Body},
+				{Title = "Abysall Hub", Description = Settings.Title .. "\n" .. Settings.Body},
 				{OutlineColor = Library.Scheme.AccentColor,Time = Settings.Time or 5, Type = "image"},
 				{Image = Settings.Image, ImageColor = Color3.fromRGB(255, 255, 255)}
 			)
 		else
 			Globals.STX:Notify(
-				{Title = "FGHub", Description = Settings.Title .. "\n" .. Settings.Body},
+				{Title = "Abysall Hub", Description = Settings.Title .. "\n" .. Settings.Body},
 				{OutlineColor = Library.Scheme.AccentColor,Time = Settings.Time or 5, Type = "default"}
 			)
 		end
@@ -1226,8 +1226,8 @@ Functions.GetRandomCode = function()
 end
 
 local Window = Library:CreateWindow({
-	Title = "FGHub",
-	Footer = "Forked from Abysall Hub!",
+	Title = "Abysall Hub Continued",
+	Footer = "dsc.gg/abysallhubcontinued",
 	NotifySide = "Right",
 	ShowCustomCursor = false,
 	AutoShow = true,
@@ -1253,10 +1253,10 @@ Abysall.Interface.ApplyInfoTab(Window)
 local Tabs = {
 	General  = Window:AddTab("General", "house"),
 	Exploits = Window:AddTab("Exploits", "shield"),
-	Visuals  = Window:AddTab("Visuals", "rbxassetid://9873864431"),
+	Visuals  = Window:AddTab("Visuals", "eye"),
 	Floors   = Window:AddTab("Floors", "earth"),
-	Archives  = Window:AddTab("Archives", "rbxassetid://130545864809455"),
-	Stairwell = Window:AddTab("Stairwell", "rbxassetid://116163134938572"),
+	Archives  = Window:AddTab("New - Archives", "rbxassetid://104508835882225"),
+	Stairwell = Window:AddTab("New - Stairwell", "rbxassetid://80017304328364"),
 }
 
 Groupboxes.General_Character = Tabs.General:AddLeftGroupbox("Character")
@@ -4446,7 +4446,7 @@ Functions.HandleCharacter = function(NewCharacter)
 		end
 
 		if Globals.SelfKilled and Globals.MainUI:FindFirstChild("Statistics") then
-			Globals.MainUI.Statistics.Death.Text = "Died to FGHub"
+			Globals.MainUI.Statistics.Death.Text = "Died to Abysall Hub"
 		end
 
 		local MainFrame = Globals.MainUI:FindFirstChild("MainFrame")
