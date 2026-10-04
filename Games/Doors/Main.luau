@@ -78,11 +78,6 @@ Abysall.Interface = loadstring(game:HttpGet(
     BaseUrl .. "Components/Interface.luau"
 ))()
 
-Abysall.Analytics = loadstring(game:HttpGet(
-    BaseUrl .. "Components/Analytics.luau"
-))()
-
-
 Abysall.SavePath = "Doors/Game"
 
 local Library = Abysall.Interface.Library
@@ -367,7 +362,9 @@ local ItemNames = {
 	["AloeVera"]          = "Aloe Vera",
 	["Donut"]             = "Donut",
 	["Lotus"]             = "Lotus",
-	["BoxingGloves"]      = "Boxing Gloves"
+	["BoxingGloves"]      = "Boxing Gloves",
+	["ObjectScanner"]     = "Scanner",
+
 }
 
 local CutsceneNames = {
