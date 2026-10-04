@@ -177,16 +177,16 @@ end
 
 local Entities = {
 	["StemsEntity"] = {
-	    Alias = 'Balls',
-		NotifyMessage = { Title = "Balls", Body = "Balls."}
+	    Alias = 'Stem',
+		NotifyMessage = { Title = "Entity 'Stem' has spawned.", Body = "Smash it against the floor or the wall."}
 	},
 	["NoiseModel"] = {
 		Alias = 'Noise',
-		NotifyMessage = { Title = "Entity 'Noise' has spawned.", Body = "Dont let it touch you." }
+		NotifyMessage = { Title = "Entity 'Noise' has spawned.", Body = "Break its TV and don't let it touch you." }
 	},
 	["Creak"] = {
 		Alias = "Creak",
-		NotifyMessage = { Title = "Entity 'Creak' has spawned.", Body = "Dont touch him." }
+		NotifyMessage = { Title = "Entity 'Creak' has spawned.", Body = "Keep an eye on it from time to time." }
 	},
 	["DronesStampede"] = {
 		Alias = "DronesStampede",
@@ -194,7 +194,7 @@ local Entities = {
 	},
 	["TellerRig"] = {
 		Alias = "Teller",
-		NotifyMessage = { Title = "Entity 'Teller' has spawned.", Body = "Dont worry, hes only annoying." }
+		NotifyMessage = { Title = "Entity 'Teller' has spawned.", Body = "Give him the ticket on time." }
 	},
 	["Scribbles"] = {
 		Alias = "Scribbles",
