@@ -203,16 +203,16 @@ local PortraitName = "MirrorRig_Portrait_" .. LocalPlayer.Name
 
 local Entities = {
 	["TV_Stand"] = {
-		Alias = "Noise_TV",
-		NotifyMessage = { Title = "Noise tv spawned.", Body = "Don't get too close to it." }
+		Alias = "Noise's TV",
+		NotifyMessage = { Title = "Noise's TV has spawned.", Body = "Don't get too close to it." }
 	},
 	[PortraitName] = {
 		Alias = "Portrait",
-		NotifyMessage = { Title = "Portrait' has spawned.", Body = "Use him to duplicate items." }
+		NotifyMessage = { Title = "Entity 'Portrait' has spawned.", Body = "Use him to duplicate items." }
 	},
 	["StemsEntity"] = {
-	    Alias = 'Balls',
-		NotifyMessage = { Title = "Stem", Body = "Smash it against the floor or the wall."}
+	    Alias = 'Stem',
+		NotifyMessage = { Title = "Entity 'Stem' has spawned.", Body = "Smash it against the floor or the wall."}
 	},
 	["NoiseModel"] = {
 		Alias = 'Noise',
@@ -324,7 +324,11 @@ local EntityIcons = {
 	["GlitchAmbush"]    = "rbxassetid://88369678433359",
 	["SallyMoving"]     = "rbxassetid://10840888070",
 	["MonumentEntity"]  = "rbxassetid://88933556873017",
-	["Groundskeeper"]   = "rbxassetid://114991380115557"
+	["Groundskeeper"]   = "rbxassetid://114991380115557",
+	["Bash"]            = "rbsassetid://131362255213127",
+	["Scribbles"]       = "rbxassetid://73979951166558",
+	["Creak"]           = "rbxassetid://133725035887208",
+	["NoiseModel"]      = "rbxassetid://92994006325147"
 }
 
 local ItemNames = {
@@ -376,6 +380,7 @@ local ItemNames = {
 	["GweenSoda"]         = "Gween Soda",
 	["GlitchCube"]        = "Glitch Fragment",
 	["Scanner"]           = "Tablet",
+	["ObjectScanner"]     = "Scanner",
 	["Bomb"]              = "Bomb",
 	["Knockbomb"]         = "Knockbomb",
 	["Nanner"]            = "Nanner",
@@ -398,7 +403,8 @@ local ItemNames = {
 	["AloeVera"]          = "Aloe Vera",
 	["Donut"]             = "Donut",
 	["Lotus"]             = "Lotus",
-	["BoxingGloves"]      = "Boxing Gloves"
+	["BoxingGloves"]      = "Boxing Gloves",
+	["PeachCobbler"]      = "Peach Cobbler"
 }
 
 local CutsceneNames = {
@@ -4867,7 +4873,7 @@ Groupboxes.Visuals_EntitySettings = Groupboxes.Visuals_RightTab:AddTab("Settings
 
 Groupboxes.Visuals_Entities:AddDropdown("EntityList", {
 	Text = "Entity List",
-	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise_TV","Balls","Portrait","Ambush","Eyes","Halt","Blitz","Lookman","Gloombat Swarm","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Monument","AR0xMBUSH","RNIUSHCG==" },
+	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise's TV","Stem","Portrait","Ambush","Eyes","Halt","Blitz","Lookman","Gloombat Swarm","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Monument","AR0xMBUSH","RNIUSHCG==" },
 	Multi = true, AllowNull = true
 })
 Groupboxes.Visuals_Entities:AddToggle("NotifyEntities",    { Text = "Notify Entities",    Default = false, Tooltip = "Sends a notification when an entity spawns." })
@@ -5223,7 +5229,7 @@ Groupboxes.Visuals_ESP_Toggles:AddToggle("MiscESPToggle",       { Text = "Misc",
 Groupboxes.Visuals_ESP_Toggles:AddDivider()
 Groupboxes.Visuals_ESP_Toggles:AddDropdown("EntityESPOptions",     { 
 	Text = "Entity List",
-	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise_TV","Balls","Portrait","Ambush","Eyes","Dupe","Figure","Blitz","Lookman","Snare","Giggle","Gloombat Eggs","Grumble","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Mandrake Hole","Monument","Bramble","AR0xMBUSH","RNIUSHCG==" },
+	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise's TV","Stem","Portrait","Ambush","Eyes","Dupe","Figure","Blitz","Lookman","Snare","Giggle","Gloombat Eggs","Grumble","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Mandrake Hole","Monument","Bramble","AR0xMBUSH","RNIUSHCG==" },
 	Multi = true,
 	AllowNull = true
 })
