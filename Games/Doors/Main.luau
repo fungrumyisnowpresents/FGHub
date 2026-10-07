@@ -326,10 +326,12 @@ local EntityIcons = {
 	["SallyMoving"]     = "rbxassetid://10840888070",
 	["MonumentEntity"]  = "rbxassetid://88933556873017",
 	["Groundskeeper"]   = "rbxassetid://114991380115557",
-	["Bash"]            = "rbsassetid://131362255213127",
-	["Scribbles"]       = "rbxassetid://73979951166558",
-	["Creak"]           = "rbxassetid://133725035887208",
-	["NoiseModel"]      = "rbxassetid://92994006325147"
+	["Bash"]            = "rbsassetid://72123507961450",
+	["Scribbles"]       = "rbxassetid://76678118479672",
+	["Creak"]           = "rbxassetid://137398759576035",
+	["NoiseModel"]      = "rbxassetid://92994006325147",
+    ["StemsEntity"]     = "rbxassetid://71040744339175",
+    ["TV_Stand"]        = "rbxassetid://89995008303389",
 }
 
 local ItemNames = {
