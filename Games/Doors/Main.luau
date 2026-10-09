@@ -632,6 +632,7 @@ Globals.DoorsNotify = function(NotifyOptions)
 	Achievement.Frame.Details.Desc.Text = NotifyOptions.Description or "Sem Descrição"
 	Achievement.Frame.Details.Reason.Text = NotifyOptions.Reason or ""
 	Achievement.Frame.ImageLabel.Image = (NotifyOptions.Image ~= "" and NotifyOptions.Image) or "rbxassetid://6023426923"
+    Achievement.Frame.ImageLabel.ScaleType = Enum.ScaleType.Fit
 
 	local Color = NotifyOptions.Color or Color3.new(1, 1, 1)
 	Achievement.Frame.TextLabel.TextColor3 = Color
