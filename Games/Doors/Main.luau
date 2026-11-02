@@ -17,11 +17,12 @@ getgenv().Abysall = {
 }
 
 
-local BaseUrl = "https://raw.githubusercontent.com/fungrumyisnowpresents/FGHub/main/"
+local BaseUrl = "https://raw.githubusercontent.com/coolcookiebusiness/AbysallHubContinued/main/"
 
 getgenv().Abysall = {
     Environment = loadstring(game:HttpGet(BaseUrl .. "Components/Environment.luau"))(),
     ESPLibrary = loadstring(game:HttpGet(BaseUrl .. "Components/ESP.luau"))(),
+    ["16Notice"] = loadstring(game:HttpGet(BaseUrl .. "Components/16Notice.luau"))(),
     Legit = true
 }
 
@@ -89,20 +90,6 @@ Abysall.SavePath = "Doors/Game"
 local Library = Abysall.Interface.Library
 local SaveManager = Abysall.Interface.SaveManager
 local ThemeManager = Abysall.Interface.ThemeManager
-
-local WhitelistedUserIds = {
-    [5495987708] = true,
-	[7524188095] = true,
-	[3019577679] = true,
-    [7422056944] = true,
-    [9558709095] = true, 
-}
-
-local WhitelistPlayer = Services.Players.LocalPlayer
-if not WhitelistedUserIds[WhitelistPlayer.UserId] then
-    Library:Notify("Not in whitelist! Cannot run script")
-    return
-end
 
 local Toggles = Library.Toggles
 local Options = Library.Options
@@ -196,14 +183,23 @@ Functions.CheckCompatability = function(Array)
 end
 
 
-
+-- DontGroup
 local LocalPlayer = Services.Players.LocalPlayer
+
 
 
 local PortraitName = "MirrorRig_Portrait_" .. LocalPlayer.Name
 
 
 local Entities = {
+	["Weaveling"] = {
+		Alias = "Weaveling",
+		NotifyMessage = { Title = "Weaveling has spawned", Body = "Try to grab it." }
+	},
+	["Creak-HALLOWEEN26"] = {
+		Alias = "CreakHalloween",
+		NotifyMessage = { Title = "Entity 'Abe' has spawned", Body = "Keep an eye on it from time to time."}
+	},
 	["TV_Stand"] = {
 		Alias = "Noise's TV",
 		NotifyMessage = { Title = "Noise's TV has spawned.", Body = "Don't get too close to it." }
@@ -225,12 +221,12 @@ local Entities = {
 		NotifyMessage = { Title = "Entity 'Creak' has spawned.", Body = "Keep an eye on it from time to time." }
 	},
 	["DronesStampede"] = {
-		Alias = "Drones Stampede",
+		Alias = "DronesStampede",
 		NotifyMessage = { Title = "Entity 'Drones Stampede' has spawned.", Body = "Find a hiding spot." }
 	},
 	["TellerRig"] = {
 		Alias = "Teller",
-		NotifyMessage = { Title = "Entity 'Teller' has spawned.", Body = "Give him the ticket on time." }
+		NotifyMessage = { Title = "Entity 'Teller' has spawned.", Body = "Dont worry, hes only annoying." }
 	},
 	["Scribbles"] = {
 		Alias = "Scribbles",
@@ -306,7 +302,7 @@ local Entities = {
 	},
 	["SallyMoving"] = {
 		Alias = "Sally",
-		NotifyMessage = { Title = "Entity 'Sally' has spawned.", Body = "Find her horse and drop it." }
+		NotifyMessage = { Title = "Entity 'Sally' has spawned.", Body = "Find her horse and rop it." }
 	}
 }
 
@@ -327,24 +323,36 @@ local EntityIcons = {
 	["SallyMoving"]     = "rbxassetid://10840888070",
 	["MonumentEntity"]  = "rbxassetid://88933556873017",
 	["Groundskeeper"]   = "rbxassetid://114991380115557",
-	["Bash"]            = "rbsassetid://72123507961450",
-	["Scribbles"]       = "rbxassetid://76678118479672",
-	["Creak"]           = "rbxassetid://137398759576035",
+	["Bash"]            = "rbsassetid://131362255213127",
+	["Scribbles"]       = "rbxassetid://73979951166558",
+	["Creak"]           = "rbxassetid://133725035887208",
 	["NoiseModel"]      = "rbxassetid://92994006325147",
-    ["StemsEntity"]     = "rbxassetid://71040744339175",
-    ["TV_Stand"]        = "rbxassetid://89995008303389",
+	["StemsEntity"]     = "rbxassetid://119093446383551",
+	["TV_Stand"]        = "rbxassetid://90130241510128"
 }
 
 local ItemNames = {
-	["AbrahamHat"]        = "Hat",
-	["LargeScrew"]        = "Screw",
+    ["AbrahamHat"]       = "Hat",
+    ["LargeScrew"]       = "Screw",
+    ["KeyJewelry"]       = "Jewerly Key",
+    ["Leftovers"]        = "Lunch Box",
+    ["Haybale"]          = "Haybale",
+    ["WizardHat"]        = "Wizard Hat",
+    ["CandyBasket"]      = "Candy Basket",
+    ["BrokenHeadstone"]  = "Broken Headstone",
+    ["GiantGummyworm"]   = "Giant Gummyworm",
+    ["ChocolateCrate"]   = "Crate of Chocolate",
+    ["CandyBucket"]      = "Candy Bucket",
+    ["LargeCandyBag"]    = "Large Candy Bag",
+    ["SmallCauldron"]    = "Small Cauldron",
+    ["ObjectScanner"]    = "Scanner",
+    ["Drive"]            = "Drive",
 	["DinkyLamp"]         = "Lamp",
 	["BottleCrate"]       = "18+ Bottles",
 	["GweenSodaPack"]     = "Gween Soda Pack",
 	["BrokenMonitor"]     = "Broken Monitor",
 	["JerryCan"]          = "Jerry Can",
  	["SallyToyObtain"]    = "Sally Toy",
-	["Leftovers"]         = "Lunch Box",
 	["HoneyPot"]          = "Honey Pot",
 	["FihFlakes"]         = "Fih Food",
 	["SecretCD"]          = "CD Disc",
@@ -384,7 +392,6 @@ local ItemNames = {
 	["GweenSoda"]         = "Gween Soda",
 	["GlitchCube"]        = "Glitch Fragment",
 	["Scanner"]           = "Tablet",
-	["ObjectScanner"]     = "Scanner",
 	["Bomb"]              = "Bomb",
 	["Knockbomb"]         = "Knockbomb",
 	["Nanner"]            = "Nanner",
@@ -407,8 +414,7 @@ local ItemNames = {
 	["AloeVera"]          = "Aloe Vera",
 	["Donut"]             = "Donut",
 	["Lotus"]             = "Lotus",
-	["BoxingGloves"]      = "Boxing Gloves",
-	["PeachCobbler"]      = "Peach Cobbler"
+	["BoxingGloves"]      = "Boxing Gloves"
 }
 
 local CutsceneNames = {
@@ -435,12 +441,14 @@ local CollisionClone
 local CollisionPart
 local CollisionPartClone
 
-local Camera
+local Camera = workspace:FindFirstChild("Camera")
 
 local RemotesFolder   = Services.ReplicatedStorage:FindFirstChild("RemotesFolder")
 local LiveModifiers   = Services.ReplicatedStorage:FindFirstChild("LiveModifiers")
 local FloorReplicated = Services.ReplicatedStorage:FindFirstChild("FloorReplicated")
+
 local CurrentRooms    = Services.Workspace:FindFirstChild("CurrentRooms")
+
 local Drops           = Services.Workspace:FindFirstChild("Drops")
 local GameData        = Services.ReplicatedStorage:WaitForChild("GameData")
 local Floor           = GameData:WaitForChild("Floor").Value
@@ -633,7 +641,6 @@ Globals.DoorsNotify = function(NotifyOptions)
 	Achievement.Frame.Details.Desc.Text = NotifyOptions.Description or "Sem Descrição"
 	Achievement.Frame.Details.Reason.Text = NotifyOptions.Reason or ""
 	Achievement.Frame.ImageLabel.Image = (NotifyOptions.Image ~= "" and NotifyOptions.Image) or "rbxassetid://6023426923"
-    Achievement.Frame.ImageLabel.ScaleType = Enum.ScaleType.Fit
 
 	local Color = NotifyOptions.Color or Color3.new(1, 1, 1)
 	Achievement.Frame.TextLabel.TextColor3 = Color
@@ -1265,8 +1272,6 @@ local Window = Library:CreateWindow({
 })
 
 
-
-
 Abysall.Interface.ApplyInfoTab(Window)
 
 local Tabs = {
@@ -1276,6 +1281,7 @@ local Tabs = {
 	Floors = Window:AddTab("Floors", "earth"),
 	Archives = Window:AddTab("Archives", "rbxassetid://104508835882225"),
 	Stairwell = Window:AddTab("Stairwell", "rbxassetid://80017304328364"),
+	Halloween = Window:AddTab("New - Halloween", "rbxassetid://101034055693026"),
 }
 
 
@@ -2915,7 +2921,7 @@ Groupboxes.Archives_Misc:AddToggle("AntiRansom", { Text = "Anti Ransom", Default
 Groupboxes.Archives_Misc:AddToggle("AntiClosetTrash", { Text = "Anti Closet Trash", Default = false, Tooltip = "Prevents 'Closet Trash' from spawning." })
 Groupboxes.Archives_Misc:AddToggle("ForgetMeNotSolver", { Text = "Forget Me Not Skipper", Default = false, Tooltip = "Automatically Skippes Forget Me Not doors." })
 Groupboxes.Archives_Misc:AddToggle("TimeShower", { Text = "Time Shower", Default = false, Tooltip = "Shows the Archives clock time." })
-Groupboxes.Archives_Misc:AddToggle("BypassDronesStampede", { Text = "Stop Time/Anti Stampede", Default = false, Tooltip = "Prevents 'Drones Stampede' from spawning." })
+Groupboxes.Archives_Misc:AddToggle("BypassDronesStampede", { Text = "Stop Time/Anti Stampede", Default = false, Tooltip = "Prevents 'The Drones Stampede' from attacking you." })
 Groupboxes.Archives_Misc:AddToggle("HonchoCorrectBoxESP", { Text = "Correct Box ESP/Auto Interact", Default = false, Tooltip = "ESP correct Archives boxes in the Honcho sequence and automatically interact with the correct deposit." })
 
 TimeShowerLabel = Instance.new("TextLabel")
@@ -3062,6 +3068,7 @@ end
 Toggles.HonchoCorrectBoxESP:OnChanged(function(Value)
 	ClearHonchoESP()
 	if not Value then return end
+	-- DontGroup
 	local CurrentRooms = workspace:FindFirstChild("CurrentRooms")
 	if not CurrentRooms then return end
 
@@ -3391,7 +3398,7 @@ Toggles.BypassWater:OnChanged(function(Value)
 		table.clear(WaterParts)
 		return
 	end
-
+	-- DontGroup
 	local CurrentRooms = workspace.CurrentRooms
 
 	local function ProcessWaterBypassRoom(WaterBypassRoom)
@@ -3750,7 +3757,7 @@ Toggles.KillAllWithCart:OnChanged(function(KillAllWithCartState)
 				end
 				KillAllWithCartIndex = KillAllWithCartIndex + 1
 			end
-			task.wait(0.10)
+			task.wait(0)
 		end
 	end)
 end)
@@ -3928,6 +3935,7 @@ Toggles.StairwellLandingSpam:OnChanged(function(Value)
 	local CurrentToken = StairwellLandingToken
 
 	task.spawn(function()
+		-- DontGroup
 		local CurrentRooms = workspace.CurrentRooms
 		local LocalPlayer = Services.Players.LocalPlayer
 
@@ -4442,6 +4450,97 @@ Toggles.DroppedItemValue:OnChanged(function(DroppedItemValue)
 	end)
 end)
 
+-- Halloween
+Groupboxes.Halloween_Misc = Tabs.Halloween:AddLeftGroupbox("Exploits / Anti")
+--[[
+ Groupboxes.Halloween_Misc:AddButton({
+	Text = "Candy Farm",
+	Func = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/coolcookiebusiness/AbysallHubContinued/refs/heads/main/Games/Doors/verity's%20auto%20farm.txt")) end,
+	DoubleClick = false,
+	Tooltip = "By Indexell."
+}) 
+--]]
+Groupboxes.Halloween_Misc:AddToggle("SkipCutsenesHalloween", {
+	Text = "Skip Cutsenes", Default = false,
+	Tooltip = "Skip cutsenes."
+})
+Groupboxes.Halloween_Misc:AddToggle("RemoveFogHalloween", {
+    Text = "Remove Extra Fog",
+    Default = false,
+    Tooltip = "Removes The extra fog."
+})
+Groupboxes.Halloween_Misc:AddButton({
+	Text = "Bring Dropped Candy",
+	Func = function() BringDroppedItems() end,
+	DoubleClick = false,
+	Tooltip = "Brings all dropped Candy (use for the depot)."
+})
+
+Groupboxes.Halloween_Misc:AddToggle("EnableDroppedItemsIntervalHalloween", {
+	Text = "Enable Interval",
+	Default = false,
+	Tooltip = "Automatically brings candy items at the selected interval."
+})
+
+Groupboxes.Halloween_Misc:AddSlider("DroppedItemsIntervalHalloween", {
+	Text = "Interval",
+	Default = 1,
+	Min = 0,
+	Max = 60,
+	Rounding = 1,
+	Compact = false,
+	Tooltip = "How often dropped items are brought."
+})
+
+Toggles.EnableDroppedItemsIntervalHalloween:OnChanged(function(enabled)
+	if enabled then
+		if droppedItemsIntervalRunning then return end
+		droppedItemsIntervalRunning = true
+		task.spawn(function()
+			while Toggles.EnableDroppedItemsIntervalHalloween.Value do
+				BringDroppedItems()
+				local interval = Options.DroppedItemsIntervalHalloween.Value
+				if interval <= 0 then
+					task.wait()
+				else
+					task.wait(interval)
+				end
+			end
+			droppedItemsIntervalRunning = false
+		end)
+	end
+end)
+
+Toggles.SkipCutsenesHalloween:OnChanged(function(Value)
+    if Value then
+        task.spawn(function()
+            local Event = game:GetService("ReplicatedStorage").FloorReplicated.ClientRemote.SkipCutscene.Remote
+
+            while Toggles.SkipCutsenesHalloween.Value do
+                Event:FireServer(1, true)
+                Event:FireServer(2, true)
+
+
+                task.wait(0.5)
+            end
+        end)
+    end
+end)
+Toggles.RemoveFogHalloween:OnChanged(function(Value)
+    if Value then
+        task.spawn(function()
+            while Toggles.RemoveFogHalloween.Value do
+                for _, v in ipairs(workspace:GetDescendants()) do
+                    if v.Name == "FogScout" or v.Name == "FogHolder" then
+                        v:Destroy()
+                    end
+                end
+
+                task.wait(0.5)
+            end
+        end)
+    end
+end)
 -- hi
 
 Groupboxes.Exploits_BypassRight = Tabs.Exploits:AddRightGroupbox("Bypass")
@@ -4878,7 +4977,7 @@ Groupboxes.Visuals_EntitySettings = Groupboxes.Visuals_RightTab:AddTab("Settings
 
 Groupboxes.Visuals_Entities:AddDropdown("EntityList", {
 	Text = "Entity List",
-	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise's TV","Stem","Portrait","Ambush","Eyes","Halt","Blitz","Lookman","Gloombat Swarm","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Monument","AR0xMBUSH","RNIUSHCG==" },
+	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise_TV","Balls","Portrait","CreakHalloween","Weaveling","Ambush","Eyes","Halt","Blitz","Lookman","Gloombat Swarm","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Monument","AR0xMBUSH","RNIUSHCG==" },
 	Multi = true, AllowNull = true
 })
 Groupboxes.Visuals_Entities:AddToggle("NotifyEntities",    { Text = "Notify Entities",    Default = false, Tooltip = "Sends a notification when an entity spawns." })
@@ -4889,17 +4988,6 @@ Groupboxes.Visuals_Entities:AddToggle("ShowEntityPath", {
     Tooltip = "Shows the path of entitys."
 })
 
-
--- i dont wanna hear it okay? i was sick okay let me be okay fuck u okay
-
-
-
-
-Groupboxes.Visuals_Entities:AddToggle("ShowEntityPath", {
-    Text = "Show Entity Path",
-    Default = false,
-    Tooltip = "Shows the path of entitys."
-})
 
 Groupboxes.Visuals_Entities:AddSlider("ShowEntityPathNodeTransparency", {
     Text = "Node Transparency",
@@ -5174,6 +5262,7 @@ Groupboxes.Visuals_ESP_Toggles:AddToggle("ObjectiveESPToggle", { Text = "Objecti
 Toggles.ObjectiveESPToggle:AddColorPicker("ObjectiveESPColor", { Text = "Objectives", Default = Color3.fromRGB(0, 255, 0), Transparency = 0 })
 
 local ObjectiveLabels = {
+	["DepotHalloween"] 		   = "Candy Magic",
 	["StairwellLockpickDoor"]  = "Garage Door",
 	["Mirror"]				   = "Mirror",
 	["ShoppingCart"]		   = "Shopping Cart",
@@ -5234,7 +5323,7 @@ Groupboxes.Visuals_ESP_Toggles:AddToggle("MiscESPToggle",       { Text = "Misc",
 Groupboxes.Visuals_ESP_Toggles:AddDivider()
 Groupboxes.Visuals_ESP_Toggles:AddDropdown("EntityESPOptions",     { 
 	Text = "Entity List",
-	Values = { "Rush","Bash","Scribbles","Teller","Drones Stampede","Creak","Noise","Noise's TV","Stem","Portrait","Ambush","Eyes","Dupe","Figure","Blitz","Lookman","Snare","Giggle","Gloombat Eggs","Grumble","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Mandrake Hole","Monument","Bramble","AR0xMBUSH","RNIUSHCG==" },
+	Values = { "Rush","Bash","Scribbles","Teller","DronesStampede","Creak","Noise","Noise_TV","Balls","Portrait","CreakHalloween","Weaveling","Ambush","Eyes","Dupe","Figure","Blitz","Lookman","Snare","Giggle","Gloombat Eggs","Grumble","A-60","A-120","Sally","Jeff the Killer","Groundskeeper","Mandrake Hole","Monument","Bramble","AR0xMBUSH","RNIUSHCG==" },
 	Multi = true,
 	AllowNull = true
 })
@@ -5757,7 +5846,7 @@ Connections.RoomsAutoWalkHandler = Services.RunService.Heartbeat:Connect(functio
 		RemotesFolder.CamLock:FireServer()
 		Character:SetAttribute("Hiding", false)
 	end
-
+	-- DontGroup
 	local CurrentRoom = CurrentRooms[tostring(LatestRoom.Value)]
 	if CurrentRoom:FindFirstChild("Door") then
 		CurrentRoom.Door.Door.CanCollide = false
@@ -6919,6 +7008,9 @@ Functions.HandleObject = function(Object)
 				table.insert(Objects.Objectives, Object)
 			end
 		end)
+	elseif Name == "DepotHalloween" then
+		if Toggles.ObjectiveESPToggle.Value then Functions.AddESP({ Object = Object, Text = "Candy Magic", Color = Options.ObjectiveESPColor.Value }, true) end
+		table.insert(Objects.Objectives, Object)
 	elseif Name == "StairwellLockpickDoor" then
 		if Toggles.MiscESPToggle.Value then Functions.AddESP({ Object = Object, Text = "Garage Door", Color = Options.MiscESPColor.Value }, true) end
 		table.insert(Objects.Misc, Object)
@@ -7520,7 +7612,7 @@ Functions.HandleObject = function(Object)
 		local LockPromptNames = { UnlockPrompt=true, SkullPrompt=true, LockPrompt=true, ThingToEnable=true, FusesPrompt=true }
 
 		if Functions.CheckCompatability({"fireproximityprompt"}) and Floor ~= "OldHotel" and Floor ~= "Fools" then
-			local IsLockPrompt = LockPromptNames[Object.Name]
+			local IsLockPrompt = LockPromptNames[Object.Name] and Object.Parent.Name ~= "Handle" and Object.Parent.Name ~= "LockHolder"
 				or (Object.Parent and Object.Parent:GetAttribute("Locked") == true)
 				or (Object.Parent and Object.Parent.Parent and Object.Parent.Parent.Name == "Locker_Small_Locked" and Object.Name == "ActivateEventPrompt")
 
@@ -7642,7 +7734,7 @@ local AllowedInstances = {
 	GardenGateButton=true, LotusPetalPickup=true, VineGuillotine=true, LiveEntityBramble=true, ArchivesFihTank=true,
 	RiftSpawn=true, ElevatorBreaker=true, RunnerNodes=true, PathLights=true, DuckBoard=true,
 	Padlock=true, EyestalkEndCutscene=true, MinecartRig=true, SeekMovingNewClone=true, Cellar=true, ArchivesPackageDeposit=true, StairwellScrapper=true,
-	StairwellFireAlarm=true, ShoppingCart=true, Mirror=true, StairwellLockpickDoor=true
+	StairwellFireAlarm=true, ShoppingCart=true, Mirror=true, StairwellLockpickDoor=true, DepotHalloween=true
 }
 
 Functions.QueueObject = function(Object)
@@ -7935,6 +8027,7 @@ Functions.TriggerPrompt = function(Prompt)
 
 
 	-- Stairwell
+	if Prompt.Parent.Parent.Parent.Parent.Name == "CandyVault" then return end
 	if Prompt.Parent.Name == "StairwellScrapper" then return end
 	if Prompt.Name == "PortraitDupePrompt" or Prompt.Parent.Name == "MirrorTool" then return end
 	if Prompt.Name == "LaptopPrompt" or Prompt.Parent.Name == "SecretLaptop" then return end
@@ -8327,6 +8420,7 @@ end)
 
 
 while not Globals.MainUI do task.wait() end
+
 
 Abysall.Interface.ApplySettingsTab(Window)
 Functions.Notify({ Title = "Successfully loaded in " .. math.floor((tick() - LoadStart) * 1000) / 1000 .. " seconds." , Body = "Press '" .. tostring(Options.MenuKeybind.Value) .. "' to toggle the UI."})
