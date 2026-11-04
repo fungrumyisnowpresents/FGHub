@@ -1260,7 +1260,7 @@ Functions.GetRandomCode = function()
 end
 
 local Window = Library:CreateWindow({
-	Title = "FGHub",
+	Title = "Abysall Hub Continued",
 	Footer = "Forked from Abysall Hub!",
 	NotifySide = "Right",
 	ShowCustomCursor = false,
